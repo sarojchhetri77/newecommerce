@@ -29,6 +29,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'address',
+        'role_id'
     ];
 
     /**
@@ -60,4 +62,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+    public function role(){
+        return $this->hasOne(role::class);
+    }
+    public function stores(){
+        return $this->hasMany(store::class);
+    }
 }
