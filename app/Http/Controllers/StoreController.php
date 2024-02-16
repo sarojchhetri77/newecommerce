@@ -20,7 +20,7 @@ class StoreController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.store.create');
     }
 
     /**
