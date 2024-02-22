@@ -23,7 +23,6 @@ class StoresStore extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'user_id' => 'required|number',
             'email' => 'required|email|unique:users|max:255', // Change 'users' to your table name
         ];
     }

@@ -13,7 +13,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>@yield('page-title')</title>
 
     <meta name="description" content="" />
 
@@ -43,11 +43,12 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <div class="row">
-                <div class="col-lg-8 mb-4 order-0">
+              
                   <div class="card">
                     @yield('main-content')
-
+                  </div>
+                </div>
+          </div>
     <!-- Core JS -->
    @include('backend.layouts.footer')
   </body>

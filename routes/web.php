@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('store',StoreController::class);
+Route::get('/stores/approve/{store}', [StoreController::class, 'approveStore'])->name('stores.approve');
+Route::resource('stores',StoreController::class);
 
 Route::middleware([
     'auth:sanctum',
