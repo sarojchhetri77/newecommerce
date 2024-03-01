@@ -1,8 +1,10 @@
 @extends('backend.layouts.main')
 @section('page-title','Store Create')
 @section('main-content')
-
-
+<div class="p-1">
+  <a class="btn btn-primary btn-sm " href="{{route('stores.index')}}" ><i class="fa-solid fa-eye px-1"></i>view </a>
+</div>
+<div class="card">
     <div class="col-xxl">
       <div class=" mb-4">
         <div class="card-header d-flex align-items-center justify-content-between">
@@ -50,5 +52,5 @@
         </div>
       </div>
     </div>
-    
+  </div>
 @endsection

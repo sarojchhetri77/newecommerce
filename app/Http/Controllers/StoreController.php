@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoresStore;
+use App\Mail\StoreApprovalNotification;
 use App\Mail\StoreApproveRequest;
 use App\Models\store;
 use Illuminate\Auth\Events\Validated;
@@ -22,13 +23,15 @@ class StoreController extends Controller
     $store->update(['status' => 'approved']);
 
     // Optionally, send a confirmation email to the store owner
-    // ...
+    $ownerEmail = $store->user->email;
+    Mail::to($ownerEmail)->send(new StoreApprovalNotification());
 
-    return redirect()->route('home')->with('success', 'Store approved successfully.');
+    return redirect()->route('dashboard')->with('success', 'Store approved successfully.');
 }
     public function index()
     {
-        //
+        $stores = store::where("user_id",Auth::id())->get();
+        return view('backend.store.main',compact("stores"));
     }
 
     /**
