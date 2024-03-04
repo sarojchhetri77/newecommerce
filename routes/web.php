@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/stores/approve/{store}', [StoreController::class, 'approveStore'])->name('stores.approve');
-Route::resource('stores',StoreController::class);
+
 
 Route::middleware([
     'auth:sanctum',
@@ -28,4 +30,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('backend.index');
     })->name('dashboard');
+    Route::resource('stores',StoreController::class);
+    Route::resource('product',ProductController::class);
+    Route::resource('file',FileController::class);
+    Route::get('store/{store}/dashboard',[StoreController::class,'dashboard'])->name('storehome');
 });

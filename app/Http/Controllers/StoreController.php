@@ -88,4 +88,10 @@ class StoreController extends Controller
     {
         //
     }
+
+    // store dashboard
+    public function dashboard($id){
+           $store = store::with('user')->where('id',$id)->first();
+        return view('backend.store.dashboard',compact('store','id'));
+    }
 }

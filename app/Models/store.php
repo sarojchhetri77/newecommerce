@@ -21,5 +21,10 @@ class store extends Model
     public function user(){
     return $this -> belongsTo(user::class);
     }
-   
+   public function products(){
+    return $this -> hasMany(product::class);
+   }
+   public function images(){
+    return $this -> hasMany(file::class);
+   }
 }
