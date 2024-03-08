@@ -18,7 +18,12 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('price');
-            $table->string('stoke');
+            $table->string('slug')->unique();
+            $table->unsignedTinyInteger('rating');
+            $table->string('cost_price');
+            $table->string('quantity_sold')->nullable();
+            $table->string('stock');
+            $table->foreignId('child_caterory_id')->constrained();
             $table->foreign('store_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('image_id')->references('id')->on('files')->onDelete('cascade');
             $table->timestamps();

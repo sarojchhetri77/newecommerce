@@ -12,9 +12,16 @@ class product extends Model
         'name',
         'price',
         'description',
-        'stoke',
+        'stock',
         'store_id',
-        'image_id'
+        'image_id',
+        'slug',
+        'rating',
+        'cost_price',
+        'quantity_sold',
+        'child_category_id',
+        
+
     ];
     public function store()
     {
