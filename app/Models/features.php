@@ -13,4 +13,7 @@ class features extends Model
         'title',
         'value',
     ];
+    public function product(){
+return $this->belongsTo(product::class);
+    }
 }

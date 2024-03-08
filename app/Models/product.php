@@ -20,7 +20,7 @@ class product extends Model
         'cost_price',
         'quantity_sold',
         'child_category_id',
-        
+
 
     ];
     public function store()
@@ -30,5 +30,14 @@ class product extends Model
     public function image()
     {
         return $this->belongsTo(file::class);
+    }
+    public function category(){
+        return $this->belongsTo(child_category::class);
+    }
+    public function features(){
+        return $this->hasMany(features::class);
+    }
+    public function ratings(){
+        return $this->hasMany(ratings::class);
     }
 }

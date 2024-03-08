@@ -12,4 +12,7 @@ class user_phone extends Model
         'user_id',
         'phone',
     ];
+    public function user(){
+        return $this -> belongsTo(User::class);
+    }
 }

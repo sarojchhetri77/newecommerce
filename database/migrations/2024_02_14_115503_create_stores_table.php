@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('email');
+            $table->string('slug')->nullable();
             $table->string('status')->default('pending');
             $table->foreign('user_id')->references('id')->on('stores')->onDelete('cascade');
             $table->timestamps();

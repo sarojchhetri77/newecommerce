@@ -13,4 +13,11 @@ class ratings extends Model
         'user_id',
         'rating',
     ];
+    public function product(){
+        return $this->belongsTo(product::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 }

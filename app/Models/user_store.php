@@ -12,4 +12,5 @@ class user_store extends Model
         'user_id',
         'store_id',
     ];
+   
 }

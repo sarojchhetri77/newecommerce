@@ -13,4 +13,13 @@ class child_category extends Model
         'title',
         'store_id',
     ];
+    public function products(){
+        return $this->hasMany(product::class);
+    }
+    public function category(){
+        return $this->belongsTo(category::class);
+    }
+    public function store(){
+        return $this->belongsTo(store::class);
+    }
 }

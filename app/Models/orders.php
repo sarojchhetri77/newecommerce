@@ -18,4 +18,7 @@ class orders extends Model
         'order_status',
         'otp',
     ];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
