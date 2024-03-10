@@ -35,6 +35,7 @@ class ProductController extends Controller
     public function store(ProductStore $request)
     {
         $validated = $request->validated();
+        $slug = generate_slug($validated['name']);
         $id = $request->input('id');
         $product = Product::create([
             'name' => $validated['name'],
@@ -43,6 +44,7 @@ class ProductController extends Controller
             'description' => $validated['description'],
             'image_id' => $validated['image_id'],
             'store_id' => $id,
+            'slug' => $slug,
         ]);
         return redirect()->route('product.index',["id"=>$id]);
 

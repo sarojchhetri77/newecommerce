@@ -24,5 +24,10 @@ class RoleSeeder extends Seeder
             'name' => 'user',
             'store_id' =>0,
         ]);
+        // Admin 
+        DB::table('roles')->insert([
+            'name' => 'admin',
+            'store_id' =>0,
+        ]);
     }
 }

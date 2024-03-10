@@ -18,20 +18,20 @@ class StoreController extends Controller
      * 
      */
     public function approveStore(Store $store)
-{
-    // Update the store status to 'approved'
-    $store->update(['status' => 'approved']);
+    {
+        // Update the store status to 'approved'
+        $store->update(['status' => 'approved']);
+        
+        // Optionally, send a confirmation email to the store owner
+        $ownerEmail = $store->user->email;
+        Mail::to($ownerEmail)->send(new StoreApprovalNotification());
 
-    // Optionally, send a confirmation email to the store owner
-    $ownerEmail = $store->user->email;
-    Mail::to($ownerEmail)->send(new StoreApprovalNotification());
-
-    return redirect()->route('dashboard')->with('success', 'Store approved successfully.');
-}
+        return redirect()->route('dashboard')->with('success', 'Store approved successfully.');
+    }
     public function index()
     {
-        $stores = store::where("user_id",Auth::id())->get();
-        return view('backend.store.main',compact("stores"));
+        $stores = store::where("user_id", Auth::id())->get();
+        return view('backend.store.main', compact("stores"));
     }
 
     /**
@@ -46,12 +46,14 @@ class StoreController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoresStore $request)
-    {   
+    {
         $validated = $request->validated();
-       $store = store::create([
-           'name'=> $validated['name'],
-           'user_id'=> Auth::id(),
-           'email'=>$validated['email'],
+        $slug = generate_slug($validated['name']);
+        $store = store::create([
+            'name' => $validated['name'],
+            'user_id' => Auth::id(),
+            'email' => $validated['email'],
+            'slug' => $slug,
         ]);
         Mail::to('elsashrestha58@gmail.com')->send(new StoreApproveRequest($store));
         return redirect()->route('stores.create');
@@ -78,7 +80,7 @@ class StoreController extends Controller
      */
     public function update(Request $request, store $store)
     {
-        //
+        // 
     }
 
     /**
@@ -90,8 +92,9 @@ class StoreController extends Controller
     }
 
     // store dashboard
-    public function dashboard($id){
-           $store = store::with('user')->where('id',$id)->first();
-        return view('backend.store.dashboard',compact('store','id'));
+    public function dashboard($id)
+    {
+        $store = store::with('user')->where('id', $id)->first();
+        return view('backend.store.dashboard', compact('store', 'id'));
     }
 }

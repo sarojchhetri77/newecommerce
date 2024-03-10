@@ -33,5 +33,5 @@ Route::middleware([
     Route::resource('stores',StoreController::class);
     Route::resource('product',ProductController::class);
     Route::resource('file',FileController::class);
-    Route::get('store/{store}/dashboard',[StoreController::class,'dashboard'])->name('storehome');
+    Route::get('store/{store}',[StoreController::class,'dashboard'])->name('storehome');
 });

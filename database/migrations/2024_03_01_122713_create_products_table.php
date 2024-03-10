@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('price');
             $table->string('slug')->unique();
-            $table->unsignedTinyInteger('rating');
+            $table->unsignedTinyInteger('rating')->nullable();
             $table->string('cost_price');
             $table->string('quantity_sold')->nullable();
             $table->string('stock');
