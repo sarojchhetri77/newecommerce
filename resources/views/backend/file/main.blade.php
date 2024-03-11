@@ -14,7 +14,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('file.store',["id"=>$id,"sd"=>1])}}" method="POST" enctype="multipart/form-data" >
+                    <form action="{{route('store.file.store',["id"=>$id,"sd"=>1])}}" method="POST" enctype="multipart/form-data" >
                     @csrf
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="image">File</label>

@@ -48,7 +48,7 @@
             @if ($store->status == "approved")
                 
             <td>
-                <a class="btn btn-primary btn-sm " href="{{route('storehome',$store->id)}}" ><i class="fa-solid fa-eye px-1"></i>View</a>
+                <a class="btn btn-primary btn-sm " href="{{route('store.home',$store->id)}}" ><i class="fa-solid fa-eye px-1"></i>View</a>
             </td>
             @endif
 

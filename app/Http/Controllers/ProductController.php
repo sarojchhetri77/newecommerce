@@ -45,6 +45,7 @@ class ProductController extends Controller
             'image_id' => $validated['image_id'],
             'store_id' => $id,
             'slug' => $slug,
+            'cost_price' => $validated['cost_price'],
         ]);
         return redirect()->route('product.index',["id"=>$id]);
 

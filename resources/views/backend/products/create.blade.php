@@ -11,9 +11,15 @@
     @error('image_id')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
+    @error('stock')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    @error('costprice')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
     {{-- end of the error message --}}
     <div class="p-1">
-        <a class="btn btn-primary btn-sm " href="{{ route('product.index',['id' => request('id')]) }}"><i
+        <a class="btn btn-primary btn-sm " href="{{ route('store.product.index',['id' => request('id')]) }}"><i
                 class="fa-solid fa-eye px-1"></i>view </a>
     </div>
     <div class="card">
@@ -23,7 +29,7 @@
                     <h5 class="mb-0">Add Store</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('product.store',["id" => $id]) }}" method="POST">
+                    <form action="{{ route('store.product.store',["id" => $id]) }}" method="POST">
                         @csrf
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="product">Product Name</label>
@@ -53,6 +59,14 @@
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <input type="text" name="stock" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-email">Cost Price</label>
+                            <div class="col-sm-10">
+                                <div class="input-group input-group-merge">
+                                    <input type="text" name="costprice" class="form-control" />
                                 </div>
                             </div>
                         </div>

@@ -63,27 +63,43 @@
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-        <li class="menu-item {{ request()->routeIs('store*') ? 'active' : '' }}">
+        <li class="menu-item {{ request()->routeIs('stores*') ? 'active' : '' }}">
             <a href="{{ route('stores.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-shopping-bag"></i>
                 <div data-i18n="Analytics">Store</div>
             </a>
         </li>
+            {{-- main category --}}
+            @if (!request()->is('store/*'))
+                
+            <li class="menu-item {{ request()->routeIs('category*') ? 'active' : '' }}">
+                <a href="{{ route('category.index') }}" class="menu-link ">
+                    <i class="menu-icon tf-icons    fa-solid fa-list"></i>
+                    <div data-i18n="Analytics">Category</div>
+                </a>
+            </li>
+            @endif
 
         <!-- Product-->
-        @if (!request()->is(['dashboard', 'stores*']))
-            <li class="menu-item {{ request()->routeIs('product*') ? 'active' : '' }}">
-                <a href="{{ route('product.index', ['id' => $id]) }}" class="menu-link ">
+        @if (request()->is('store/*'))
+            <li class="menu-item {{ request()->routeIs('store/product*') ? 'active' : '' }}">
+                <a href="{{ route('store.product.index', ['id' => $id]) }}" class="menu-link ">
                     <i class="menu-icon tf-icons bx bx-gift"></i>
                     <div data-i18n="Analytics">Product</div>
                 </a>
             </li>
+                              {{-- store category --}}
+        <li class="menu-item {{ request()->routeIs('store.category*') ? 'active' : '' }}">
+            <a href="{{ route('store.category.index',['id'=>$id]) }}" class="menu-link ">
+                <i class="menu-icon tf-icons    fa-solid fa-list"></i>
+                <div data-i18n="Analytics">Category</div>
+            </a>
+        </li>
             <!--file -->
-            <li class="menu-item {{ request()->is('file*') ? 'active' : '' }}">
-                <a href="{{ route('file.index', ['id' => $id]) }}" class="menu-link ">
+            <li class="menu-item {{ request()->is('store/file*') ? 'active' : '' }}">
+                <a href="{{ route('store.file.index', ['id' => $id]) }}" class="menu-link ">
                     <i class="menu-icon tf-icons bx bx-upload"></i>
                     <div data-i18n="uploadfile">Upload File</div>
-
             </li>
         @endif
 
