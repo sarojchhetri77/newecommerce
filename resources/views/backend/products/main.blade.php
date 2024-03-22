@@ -2,7 +2,7 @@
 @section('page-title','product view')
 @section('main-content')
 <div class="p-1">
-  <a class="btn btn-primary btn-sm " href="{{route('store.product.create', ["id" => $id])}}" ><i class="fa-solid fa-plus px-1"></i>add</a>
+  <a class="btn btn-primary btn-sm " href="{{route('store.product.create',['id' => request('id')])}}" ><i class="fa-solid fa-plus px-1"></i>add</a>
 </div>
 <div class="card">
     <h5 class="card-header">View Products</h5>

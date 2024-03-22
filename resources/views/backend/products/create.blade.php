@@ -17,6 +17,9 @@
     @error('costprice')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
+    @error('category_id')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
     {{-- end of the error message --}}
     <div class="p-1">
         <a class="btn btn-primary btn-sm " href="{{ route('store.product.index',['id' => request('id')]) }}"><i
@@ -26,7 +29,7 @@
         <div class="col-xxl">
             <div class=" mb-4">
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Add Store</h5>
+                    <h5 class="mb-0">Add Product</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('store.product.store',["id" => $id]) }}" method="POST">
@@ -70,6 +73,20 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-email">Category</label>
+                            <div class="col-sm-10">
+                                <div class="input-group input-group-merge">
+                                    <select class="form-select" name="category_id" aria-label="Default select example">
+                                        <option>Select the category</option>
+                                        @foreach ($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->title}}</option>
+                                        @endforeach
+                                      </select>
+                                </div>
+                            </div>
+                        </div>
+                       
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-email">Description</label>
                             <div class="col-sm-10">

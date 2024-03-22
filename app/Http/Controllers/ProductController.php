@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductStore;
+use App\Models\child_category;
 use App\Models\file;
 use App\Models\product;
 use Illuminate\Http\Request;
@@ -25,8 +26,9 @@ class ProductController extends Controller
     public function create(Request $request)
     {   
         $id = $request->input('id');
+        $categories = child_category::where('store_id',$id)->get();
         $all_images = file::where("store_id",$id)->get();
-        return view('backend.products.create',compact('id','all_images'));
+        return view('backend.products.create',compact('id','all_images','categories'));
     }
 
     /**
@@ -46,6 +48,7 @@ class ProductController extends Controller
             'store_id' => $id,
             'slug' => $slug,
             'cost_price' => $validated['cost_price'],
+            'child_category_id' => $validated['category_id'],
         ]);
         return redirect()->route('product.index',["id"=>$id]);
 
