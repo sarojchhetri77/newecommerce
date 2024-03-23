@@ -9,13 +9,24 @@
                     <h5 class="mb-0">Add Category</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('category.store') }}" method="POST">
+                    <form action="{{ route('store.category.store',['id' => $id]) }}" method="POST">
                         @csrf
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="storename">Category Name</label>
                             <div class="col-sm-10">
                                 <input type="text" name="title" class="form-control" id="storename"
                                     placeholder="Name" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="category">Choose Parent Category</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" name="category_id" aria-label="Default select example">
+                                    <option selected>Choose main Category</option>
+                                    @foreach ($pcategories as $category)
+                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                    @endforeach
+                                  </select>
                             </div>
                         </div>
                         <div class="row justify-content-end">

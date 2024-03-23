@@ -74,7 +74,7 @@
                 
             <li class="menu-item {{ request()->routeIs('category*') ? 'active' : '' }}">
                 <a href="{{ route('category.index') }}" class="menu-link ">
-                    <i class="menu-icon tf-icons    fa-solid fa-list"></i>
+                    <i class="menu-icon tf-icons bx bx-category"></i>
                     <div data-i18n="Analytics">Category</div>
                 </a>
             </li>
@@ -91,7 +91,7 @@
                               {{-- store category --}}
         <li class="menu-item {{ request()->routeIs('store.category*') ? 'active' : '' }}">
             <a href="{{ route('store.category.index',['id'=>$id]) }}" class="menu-link ">
-                <i class="menu-icon tf-icons    fa-solid fa-list"></i>
+                <i class="menu-icon tf-icons bx bx-category"></i>
                 <div data-i18n="Analytics">Category</div>
             </a>
         </li>
